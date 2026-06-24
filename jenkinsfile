@@ -31,7 +31,7 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat', 
-                        path: '/manager/html', 
+                        path: '/manager/text', 
                         url: 'http://localhost:8090'
                     )
                 ], 
