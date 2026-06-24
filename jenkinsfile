@@ -31,11 +31,11 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat', 
-                        path: 'manager/html', 
+                        path: '', 
                         url: 'http://localhost:8080'
                     )
                 ], 
-                contextPath: java-hello-world, 
+                contextPath: "java-hello-world", 
                 war: '**/*.war'
             }
         }
