@@ -32,7 +32,7 @@ pipeline {
                     tomcat9(
                         credentialsId: 'tomcat', 
                         path: 'manager/html', 
-                        url: 'http://localhost:8080'
+                        url: 'http://localhost:8090'
                     )
                 ], 
                 contextPath: "java-hello-world", 
