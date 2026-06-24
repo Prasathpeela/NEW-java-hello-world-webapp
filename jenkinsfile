@@ -9,7 +9,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Source code checkout'
+                git branch: 'master', 
+                url: 'https://github.com/Prasathpeela/NEW-java-hello-world-webapp.git'
             }
         }
 
@@ -19,15 +20,23 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                echo 'Testing completed'
-            }
-        }
-
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.war'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                deploy adapters: [
+                    tomcat9(
+                        credentialsId: 'tomcat', 
+                        path: '', 
+                        url: 'http://localhost:8080'
+                    )
+                ], 
+                contextPath: java-hello-world, 
+                war: '**/*.war'
             }
         }
     }
